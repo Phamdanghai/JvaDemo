@@ -2,6 +2,7 @@ package com.green.jdevd010.CoffeeMintClient.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.User;
@@ -37,5 +38,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 		manager.createUser(userGreen);
 		
 		return manager;
+	}
+	
+	@Override
+	protected void configure(HttpSecurity http)throws Exception {
+		http.authorizeRequests().antMatchers("/","/assets/**","/css/**","/fonts/**","/images/**","/js/**","/vendor/**").permitAll()
+		.anyRequest().authenticated()
+		.and().formLogin().loginPage("/login").permitAll()
+		.and().logout().permitAll();
 	}
 }
