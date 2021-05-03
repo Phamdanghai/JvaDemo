@@ -1,11 +1,16 @@
-package com.green.jdevd010.CoffeeMintClient.controllers.services;
+package com.green.jdevd010.CoffeeMintClient.security;
 
 import java.util.Collection;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-public class TaiKhoanDeTailsService implements UserDetails{
+public class MyUserDetails implements UserDetails {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6597804472274659224L;
 
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {

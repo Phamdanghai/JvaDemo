@@ -16,7 +16,7 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 
-	private final String password = "$2a$10$dxR/KWKQ6QAHiFk1b8yLGOgn9h7LQr9PSgeZUaifKjiOoQKtPiSL6";
+	private final String password = "$2a$10$QF/YQ9BzZoPmi5of5kkNeOP0bre/XmlsxyMX61aEeKwBsSxsfv1/u";
 	
 	@Bean
 	public PasswordEncoder passwordEncoder() {
@@ -41,10 +41,22 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter  {
 	}
 	
 	@Override
-	protected void configure(HttpSecurity http)throws Exception {
-		http.authorizeRequests().antMatchers("/","/assets/**","/css/**","/fonts/**","/images/**","/js/**","/vendor/**").permitAll()
+	protected void configure(HttpSecurity http) throws Exception {
+		http.authorizeRequests()
+		.antMatchers("/", "/assets/**", "/css/**", "/fonts/**", "/images/**",
+				"/js/**", "/vendor/**").permitAll()
 		.anyRequest().authenticated()
 		.and().formLogin().loginPage("/login").permitAll()
 		.and().logout().permitAll();
 	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
